@@ -1,0 +1,8 @@
+# .DS_Store Mac OSX files
+.DS_Store
+
+# GIMP files folder
+assets/_gimp
+
+# personal dev ramblings
+_DEV.md
