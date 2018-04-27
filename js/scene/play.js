@@ -20,6 +20,9 @@ window.GAME = (function (window, module) {
     // buttons
     var buttons = [];
 
+    // audio
+    var audio;
+
 
 
     // exportable object
@@ -99,9 +102,21 @@ window.GAME = (function (window, module) {
                 }
             ));
 
-            // load selector image
-            selector = new window.Image();
-            selector.src = 'assets/images/selector.png';
+            // load selector image if null
+            if (!selector) {
+                selector = new window.Image();
+                selector.src = 'assets/images/selector.png';
+            }
+
+            // load audio if null
+            if (!audio) {
+                audio = {
+                    click: new window.Audio("assets/audio/click.wav"),
+                    explosion: new window.Audio("assets/audio/grenade.wav"),
+                    cheer: new window.Audio("assets/audio/cheer.wav")
+                };
+            }
+
         },
 
 
@@ -261,7 +276,20 @@ window.GAME = (function (window, module) {
                     if (click.in === "minefield") {
                         // depending on how long click was held, reveal or flag mine
                         if (click.time < GAME.Config.framesToFlag) {
-                            minefield.expose(click.target);
+                            if (minefield.gameState === 0) {
+                                minefield.expose(click.target);
+                                // play audio depending on status
+                                if (minefield.gameState === -1) {
+                                    // lost! play explosion
+                                    audio.explosion.play();
+                                } else if (minefield.gameState === 1) {
+                                    // win! play cheer
+                                    audio.cheer.play();
+                                } else {
+                                    // nothing special, play click
+                                    audio.click.play();
+                                }
+                            }
                         } else {
                             minefield.flag(click.target);
                         }

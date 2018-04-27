@@ -131,7 +131,7 @@ window.GAME = (function (window, module) {
 
             $display.context.buffer.font = "28px DS-Digital";
             $display.context.buffer.fillStyle = "#31E070";
-            $display.context.buffer.fillText(countSubstr("> by ignacio cartes", 12) + "_", 48, 80);
+            $display.context.buffer.fillText(countSubstr("> by nacho c.", 12) + "_", 48, 80);
 
             // buttons - only render when text has been rendered fully (30 characters)
             if (charCounter >= 32) {
