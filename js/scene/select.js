@@ -125,17 +125,17 @@ window.GAME = (function (window, module) {
                 return text.substr(0, curLen);
             }
 
-            $display.context.buffer.font = "32px DS-Digital";
+            $display.context.buffer.font = "32px DS Digital";
             $display.context.buffer.fillStyle = "#22F96F";
             $display.context.buffer.fillText(countSubstr("> minesweeper", 0) + "_", 48, 32);
 
-            $display.context.buffer.font = "28px DS-Digital";
+            $display.context.buffer.font = "28px DS Digital";
             $display.context.buffer.fillStyle = "#31E070";
             $display.context.buffer.fillText(countSubstr("> by nacho c.", 12) + "_", 48, 80);
 
             // buttons - only render when text has been rendered fully (30 characters)
             if (charCounter >= 32) {
-                $display.context.buffer.font = "20px DS-Digital";
+                $display.context.buffer.font = "20px DS Digital";
                 for (var bIndex in buttons)
                     buttons[bIndex].render($display.context.buffer);
             }

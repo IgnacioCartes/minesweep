@@ -15,13 +15,8 @@ window.GAME = (function (window, module) {
     var minefield, cursor, click = {};
     var mview = {};
 
-    var selector;
-
     // buttons
     var buttons = [];
-
-    // audio
-    var audio;
 
 
 
@@ -102,21 +97,6 @@ window.GAME = (function (window, module) {
                 }
             ));
 
-            // load selector image if null
-            if (!selector) {
-                selector = new window.Image();
-                selector.src = 'assets/images/selector.png';
-            }
-
-            // load audio if null
-            if (!audio) {
-                audio = {
-                    click: new window.Audio("assets/audio/click.wav"),
-                    explosion: new window.Audio("assets/audio/grenade.wav"),
-                    cheer: new window.Audio("assets/audio/cheer.wav")
-                };
-            }
-
         },
 
 
@@ -156,20 +136,19 @@ window.GAME = (function (window, module) {
 
             // render cursor if active and selected tile is still not exposed
             if (click.is && (click.in === "minefield") && (minefield.exposed[click.target] <= 0)) {
-                if (selector.complete) {
-                    var frame = ((click.time % 8 >= 4) ? 0 : 64);
-                    $display.context.buffer.drawImage(
-                        selector,
-                        frame,
-                        0,
-                        64,
-                        64,
-                        (click.on.x * GAME.Config.tileSize) - mview.offset.x + GAME.Config.minefieldOffset.x,
-                        (click.on.y * GAME.Config.tileSize) - mview.offset.y + GAME.Config.minefieldOffset.y,
-                        64,
-                        64
-                    );
-                }
+                var frame = ((click.time % 8 >= 4) ? 0 : 64);
+                $display.context.buffer.drawImage(
+                    GAME.assets.selector,
+                    frame,
+                    0,
+                    64,
+                    64,
+                    (click.on.x * GAME.Config.tileSize) - mview.offset.x + GAME.Config.minefieldOffset.x,
+                    (click.on.y * GAME.Config.tileSize) - mview.offset.y + GAME.Config.minefieldOffset.y,
+                    64,
+                    64
+                );
+
             }
 
             // only render scrollbars when needed
@@ -188,7 +167,7 @@ window.GAME = (function (window, module) {
             }
 
             // text
-            $display.context.buffer.font = "40px DS-Digital";
+            $display.context.buffer.font = "40px DS Digital";
             $display.context.buffer.textBaseline = "hanging";
             $display.context.buffer.textAlign = "right";
 
@@ -215,7 +194,7 @@ window.GAME = (function (window, module) {
             );
 
             // small text
-            $display.context.buffer.font = "20px DS-Digital";
+            $display.context.buffer.font = "20px DS Digital";
             $display.context.buffer.fillStyle = "#99B5CC";
 
             $display.context.buffer.fillText(
@@ -281,13 +260,13 @@ window.GAME = (function (window, module) {
                                 // play audio depending on status
                                 if (minefield.gameState === -1) {
                                     // lost! play explosion
-                                    audio.explosion.play();
+                                    GAME.assets.explosion.play();
                                 } else if (minefield.gameState === 1) {
                                     // win! play cheer
-                                    audio.cheer.play();
+                                    GAME.assets.cheer.play();
                                 } else {
                                     // nothing special, play click
-                                    audio.click.play();
+                                    GAME.assets.click.play();
                                 }
                             }
                         } else {

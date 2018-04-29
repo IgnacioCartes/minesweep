@@ -14,7 +14,6 @@ window.GAME = (function (window, module) {
     /*= start minefield.js =*/
     // pending array - used when clearing multiple tiles
     var pending = [];
-    var image;
 
     // text colors array
     var adjColors = [
@@ -65,12 +64,8 @@ window.GAME = (function (window, module) {
         // create minefield
         this.populateMinefield();
 
-        // load image
-        image = new window.Image();
-        image.src = 'assets/images/tiles.png';
-
         // initial rendering onload
-        image.onload = this.render.bind(this);
+        this.render();
 
         return this;
     }
@@ -119,7 +114,7 @@ window.GAME = (function (window, module) {
                 }
 
             // draw tile
-            this.context.drawImage(image,
+            this.context.drawImage(GAME.assets.tiles,
                 tile, 0,
                 GAME.Config.tileSize, GAME.Config.tileSize,
                 x * GAME.Config.tileSize, y * GAME.Config.tileSize,
