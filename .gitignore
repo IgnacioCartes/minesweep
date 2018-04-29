@@ -4,5 +4,8 @@
 # GIMP files folder
 assets/_gimp
 
+# Builds folder
+_builds
+
 # personal dev ramblings
 _DEV.md
