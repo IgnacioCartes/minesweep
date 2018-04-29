@@ -1,7 +1,7 @@
 /*
- * minefield.js
+ * button.js
  *
- *  JavaScript class that represents a minefield.
+ *  JavaScript class that represents a button.
  *
  *
  *

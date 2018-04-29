@@ -167,7 +167,7 @@ window.GAME = (function (window, module) {
             }
 
             // text
-            $display.context.buffer.font = "40px DS Digital";
+            $display.context.buffer.font = "32px Courier";
             $display.context.buffer.textBaseline = "hanging";
             $display.context.buffer.textAlign = "right";
 
@@ -194,7 +194,7 @@ window.GAME = (function (window, module) {
             );
 
             // small text
-            $display.context.buffer.font = "20px DS Digital";
+            $display.context.buffer.font = "16px Courier";
             $display.context.buffer.fillStyle = "#99B5CC";
 
             $display.context.buffer.fillText(

@@ -101,6 +101,7 @@ window.onload = (function () {
                 cheer: "assets/audio/cheer.wav"
             }, GAME.assets,
             function () {
+                // run
                 hyne.run();
             }
         );
