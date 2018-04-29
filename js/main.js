@@ -5,13 +5,13 @@ window.onload = (function () {
 
     /* handle preloading of assets */
     function preload(objects, store, callback) {
-        
+
         // store has got to be initialized beforehand
         if (typeof store !== "object") {
             window.console.error("An empty object must be provided to store the assets!");
             return null;
         }
-        
+
         // keep track of loaded assets
         var loadCount = 0,
             requiredCount = Object.keys(objects).length;

@@ -65,7 +65,7 @@ window.GAME = (function (window, module) {
             this.y + (this.height / 2)
         );
     };
-    
+
 
 
     /*= end button.js =*/
